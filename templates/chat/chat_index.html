@@ -9,12 +9,14 @@
 </head>
 <body>
 <h1>My Chat App</h1>
-<h3>Hi {% if current_user.is_authenticated %}{{ current_user.username }}{% else %}Guest{% endif %}!</h3>
 
 <form action="/chat">
     <div>
         <label>Enter room id:</label>
         <input type="text" name="room">
+        <br>
+        <label>Enter username:</label>
+        <input type="text" name="username">
     </div>
     <button type="submit">Submit</button>
 </form>

@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask_socketio import SocketIO, join_room, leave_room
 from flask_login import current_user
+from socket import *
 
 app = Flask(__name__)
 socketio = SocketIO(app)
@@ -13,8 +14,10 @@ def index():
 def chat():
 
     room = request.args.get("room")
+    username = request.args.get("username")
     if room:
-        return render_template('chat/chat.html', username=current_user.username, room=room)
+        # return render_template('chat/chat.html', username=current_user.username, room=room)
+        return render_template('chat/chat.html', username=username, room=room)
     else:
         return redirect('/chatIndex')
 
