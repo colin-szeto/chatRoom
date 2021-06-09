@@ -53,4 +53,4 @@ def handle_leave_room_event(data):
 
 if __name__ == "__main__":
     # runs the application on the repl development server
-    socketio.run(app, debug=True, host='127.0.0.1', port='5000')
+    socketio.run(app, debug=True, host='127.0.0.1', port='3030')
