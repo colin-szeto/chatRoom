@@ -21,13 +21,18 @@ def chat():
     username = request.args.get("username")
     if room:
         # return render_template('chat/chat.html', username=current_user.username, room=room)
-        return render_template('chat/chat.html', username=username, room=room)
+        # return render_template('chat/chat.html', username=username, room=room)
+        return render_template('chat/chatAreaCss.html', username=username, room=room)
     else:
         return redirect('/chatIndex')
 
 @app.route("/chatIndex")
 def chatIndex():
     return render_template('chat/chat_index.html')
+
+@app.route("/chatArea")
+def chatArea():
+    return render_template('chat/chatAreaCss.html')
 
 
 @socketio.on('send_message')
