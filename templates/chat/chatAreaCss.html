@@ -56,9 +56,19 @@
     </form>
   </div>
 </div>
+
+<p id="ip_address" style="display: none">{{ip_address}}</p>
+<p id="port" style="display: none">{{port_}}</p>
+
 <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
 
 <script>
+
+  var ipAddress = document.getElementById("ip_address").innerText
+  var port = document.getElementById("port").innerText
+
+  console.log(ipAddress)
+  console.log(port)
 
   function createMessage(sender, message){
     var mesDiv = document.createElement("div");
@@ -100,9 +110,11 @@
     }
   }
 
+  var ipAssembled = "http://"+ String(ipAddress)+":"+String(port);
+  console.log(ipAssembled)
 
   // const socket = io.connect('http://' + document.domain + ':' + location.port);
-  const socket = io.connect("http://127.0.0.1:3030");
+  const socket = io.connect(ipAssembled);
 
   socket.on('connect', function (){
     socket.emit('join_room', {
